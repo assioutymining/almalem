@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>المعلم - الصفحة الرئيسية</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kufam:wght@700&display=swap"
+    
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.rtl.min.css"
+  />
+  <style>
+    body {
+      font-family: "Cairo Play", sans-serif;
+      margin: 0;
+      padding-bottom: 70px; /* مساحة لشريط التنقل السفلي */
+      background: url('https://i.pinimg.com/736x/df/6e/8d/df6e8d2fe3957652c6f1541f664785c0.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #ececf1;
+    }
+    /* أخفاء شريط التنقل العلوي */
+    nav.navbar {
+      display: none !important;
+    }
+
+    /* شعار نصي في المنتصف */
+    .logo-centered {
+      font-family: "Cairo Play", sans-serif;
+      font-weight: 900;
+      font-size: 2rem;
+      color: #d4d4d4;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-align: center;
+      margin: 1rem 0;
+      user-select: none;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+    }
+
+    .slider-section {
+      margin-top: 2rem;
+      max-width: 100%;
+      padding: 0 10px;
+      box-sizing: border-box;
+    }
+    .owl-carousel .item img {
+      width: 100%;
+      height: auto; /* بدل 300px */
+      max-height: 500px; /* حافظ على حد أقصى للارتفاع */
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(201, 184, 184, 0.4);
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+    .offers-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 30px;
+    }
+
+    .offer-card {
+      background: #222;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(255, 102, 0, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .offer-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px rgba(255, 102, 0, 0.7);
+    }
+
+    .offer-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .offer-content {
+      padding: 15px;
+    }
+
+    .offer-title {
+      font-size: 1.5rem;
+      color: #ff6600;
+      margin-bottom: 10px;
+    }
+
+    .offer-description {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .offer-btn {
+      display: inline-block;
+      margin-top: 15px;
+      background: #ff6600;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+      cursor: pointer;
+    }
+
+    .offer-btn:hover {
+      background: #e65100;
+    }
+
+    /* المودال */
+    #modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.85);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    #modal.show {
+      display: flex;
+    }
+
+    #modal-content {
+      background: #222;
+      border-radius: 16px;
+      max-width: 90vw;
+      max-height: 90vh;
+      width: auto;
+      height: auto;
+      padding: 20px;
+      text-align: center;
+      color: white;
+      box-shadow: 0 0 20px #ff6600;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    #modal-content img {
+      max-width: 100%;
+      max-height: 60vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    #modal-content .modal-title {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #ff6600;
+      font-weight: bold;
+    }
+
+    #modal-content .modal-description {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    #modal-content .modal-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+    }
+
+    #modal-content .btn {
+      background: #ff6600;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s ease;
+      flex-grow: 1;
+      max-width: 200px;
+    }
+
+    #modal-content .btn:hover {
+      background: #e65100;
+    }
+
+    #modal-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.8rem;
+      color: #ff6600;
+      cursor: pointer;
+      font-weight: bold;
+      user-select: none;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    /* شريط التنقل السفلي */
+    :root {
+      --nav-height: 60px;
+      --active-color: #b30000;
+      --inactive-color: #eee;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      height: var(--nav-height);
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: saturate(180%) blur(12px);
+      box-shadow: 0 -4px 15px rgba(179, 0, 0, 0.25);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      z-index: 1000;
+      padding: 0 15px;
+      color: var(--inactive-color);
+      font-weight: 600;
+      font-size: 0.85rem;
+      user-select: none;
+      transition: color 0.3s ease;
+    }
+    .bottom-nav ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      list-style: none;
+    }
+    .bottom-nav li {
+      flex: 1;
+      text-align: center;
+    }
+    .bottom-nav a {
+      color: var(--inactive-color);
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      transition: color 0.3s ease;
+    }
+    .bottom-nav a i {
+      font-size: 1.4rem;
+      margin-bottom: 3px;
+      transition: color 0.3s ease;
+    }
+    .bottom-nav a span {
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+    .bottom-nav a.active,
+    .bottom-nav a:hover {
+      color: var(--active-color);
+    }
+    .bottom-nav a.active i,
+    .bottom-nav a:hover i {
+      color: var(--active-color);
+      text-shadow: 0 0 8px rgba(179, 0, 0, 0.7);
+    }
+
+    /* زر واتساب عائم */
+    .whatsapp-float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 80px;
+      right: 20px;
+      background-color: #25d366;
+      color: #fff;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      z-index: 1100;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .whatsapp-float:hover {
+      background-color: #1ebe57;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+    }
+
+    /* صفحات الموقع - إخفاء كل الصفحات إلا الفعالة */
+    section.page {
+      display: none;
+      padding: 15px 10px 100px; /* اترك مسافة أسفل 100px لشريط التنقل */
+      max-width: 1200px;
+      margin: auto;
+      box-sizing: border-box;
+    }
+    section.page.active {
+      display: block;
+    }
+
+    /* صفحة السلة */
+    #cart-items .cart-item {
+      background: rgba(255,255,255,0.15);
+      margin-bottom: 12px;
+      padding: 10px 15px;
+      border-radius: 8px;
+      color: #fff;
+      position: relative;
+    }
+    #cart-items .cart-item .remove-btn {
+      position: absolute;
+      top: 8px;
+      left: 10px;
+      background: transparent;
+      border: none;
+      font-size: 20px;
+      color: #ff5555;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    #cart-items .cart-item .remove-btn:hover {
+      color: #ff0000;
+    }
+    #cart-total {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-top: 15px;
+      text-align: right;
+    }
+    #confirm-order-btn {
+      margin-top: 15px;
+      width: 100%;
+      background-color: #b30000;
+      border: none;
+      color: rgb(209, 204, 204);
+      font-size: 1.1rem;
+      padding: 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    #confirm-order-btn:hover {
+      background-color: #0059ff;
+    }
+
+    /* إشعار إضافة للسلة */
+    #toast {
+      position: fixed;
+      bottom: 130px;
+      right: 20px;
+      background-color: rgba(179,0,0,0.85);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+      z-index: 1200;
+    }
+    #toast.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="title d-flex align-items-center justify-content-center gap-2">
+  <img src="https://i.postimg.cc/K8qq5CSr/1.png" alt="المعلم " style="height: 300px; width: auto;">
+  
+</h1>
+
+    <div class="logo-centered" aria-label="شعار الموقع"> </div>
+  </header>
+
+  <!-- الصفحة الرئيسية -->
+  <section id="page-home" class="page active">
+    <div class="slider-section container">
+      <div class="owl-carousel owl-theme">
+        <div class="item">
+          <img
+            src="https://i.postimg.cc/SsTQVTs0/image.png"
+            alt="عرض 1"
+          />
+        </div>
+        <div class="item">
+          <img
+            src="https://i.postimg.cc/fWPT9rpm/image.png"
+            alt="عرض 2"
+          />
+        </div>
+        <div class="item">
+          <img
+            src="https://i.postimg.cc/kgQnLX4v/image.png"
+            alt="عرض 3"
+          />
+        </div>
+      </div>
+    </div>
+
+   
+
+
+
+
+
+
+
+  <header>🌟 عروضنا المميزة من خلال التطبيق فقط لمدة محدودة  🌟</header>
+  <section class="offers-container">
+    <div class="offer-card">
+      <img class="offer-img" src="https://i.postimg.cc/yNT83YC8/Black-Abstract-Pizza-Poster-Doodle.jpg" alt="فطيرة  جمبري ">
+      <div class="offer-content">
+        <div class="offer-title">فطيرة الجمبري    🍕</div>
+        <div class="offer-description">استمتع بأفضل فطيرة  بحشو الجمبري  واحصل علي فطيرة ميكس جبن ببلاش !</div>
+        <button class="offer-btn" data-title="فطيرة  جمبري🍕" data-description="استمتع بأفضل فطيرة  بحشو الجمبري  واحصل علي فطيرة ميكس جبن ببلاشلمدة محدودة!" data-image="https://i.postimg.cc/yNT83YC8/Black-Abstract-Pizza-Poster-Doodle.jpg">اطلب الآن</button>
+      </div>
+    </div>
+
+    <div class="offer-card">
+      <img class="offer-img" src="https://i.postimg.cc/y841fSVN/instagram.png" alt=" فطيرة ميكس جبن   ">
+      <div class="offer-content">
+        <div class="offer-title"> فطيرة ميكس جبن </div>
+        <div class="offer-description">احصل علي فطيرة ميكس جبن وعليه جبنه هديه</div>
+        <button class="offer-btn" data-title="  فطيرة ميكس جبن" data-description="احصل علي فطيرة ميكس جبن وعليه جبنه هديه" data-image="https://i.postimg.cc/y841fSVN/instagram.png">اطلب الآن</button>
+      </div>
+    </div>
+
+    <div class="offer-card">
+      <img class="offer-img" src="https://i.postimg.cc/SsTQVTs0/image.png" alt="وجبة اليوم">
+      <div class="offer-content">
+        <div class="offer-title">وجبة اليوم 🍽️</div>
+        <div class="offer-description">وجبة كاملة بسعر رمزي فقط اليوم!فطيرة وعلبه جبنه بسعر الفطيرة </div>
+        <button class="offer-btn" data-title="وجبة اليوم 🍽️" data-description="وجبة كاملة بسعر رمزي فقط اليوم!فطيرة وعلبه جبنه بسعر الفطيرة" data-image="https://i.postimg.cc/SsTQVTs0/image.png">اطلب الآن</button>
+      </div>
+    </div>
+
+    <div class="offer-card">
+      <img class="offer-img" src="https://i.postimg.cc/nrXFW4jX/image.png" alt="عرض الفطور">
+      <div class="offer-content">
+        <div class="offer-title">عرض الفطور 🌄</div>
+        <div class="offer-description">فطور فاخر يبدأ يومك بنشاط. !فطيرة وعلبه عسل بسعر الفطيرة </div>
+        <button class="offer-btn" data-title="عرض الفطور 🌄" data-description="فطور فاخر يبدأ يومك بنشاط. !فطيرة وعلبه عسل بسعر الفطيرة" data-image="https://i.postimg.cc/nrXFW4jX/image.png">اطلب الآن</button>
+      </div>
+    </div>
+
+    <div class="offer-card">
+      <img class="offer-img" src="https://i.postimg.cc/kgQnLX4v/image.png" alt="مشروبات منعشة">
+      <div class="offer-content">
+        <div class="offer-title">مشروبات منعشة 🥤</div>
+        <div class="offer-description">احصل على مشروب مجاني مع كل وجبة!محشيه</div>
+        <button class="offer-btn" data-title="مشروبات منعشة 🥤" data-description="احصل على مشروب مجاني مع كل وجبة!محشيه" data-image="https://i.postimg.cc/kgQnLX4v/image.png">اطلب الآن</button>
+      </div>
+    </div>
+
+    <div class="offer-card">
+      <img class="offer-img" src="https://i.postimg.cc/SRHSbnCD/image.png" alt="وجبة الأطفال">
+      <div class="offer-content">
+        <div class="offer-title">وجبة الأطفال 🎈</div>
+        <div class="offer-description">هدية مجانية مع كل وجبة فطير حلو </div>
+        <button class="offer-btn" data-title="وجبة الأطفال 🎈" data-description="هدية مجانية مع كل وجبة فطير حلو" data-image="https://i.postimg.cc/SRHSbnCD/image.png">اطلب الآن</button>
+      </div>
+    </div>
+
+    <div class="offer-card">
+      <img class="offer-img" src="https://i.postimg.cc/BQ1ZcCfy/image.png" alt="عرض الشاورما">
+      <div class="offer-content">
+        <div class="offer-title">عرض فطيرة اللحمه 🌯</div>
+        <div class="offer-description">فطيرة لحمه ميكس جبن بسعر حصري !</div>
+        <button class="offer-btn" data-title="عرض فطيرة اللحمه  🌯" data-description="فطيرة لحمه ميكس جبن بسعر حصري " data-image="https://i.postimg.cc/BQ1ZcCfy/image.png">اطلب الآن</button>
+      </div>
+    </div>
+
+    <div class="offer-card">
+      <img class="offer-img" src="https://i.postimg.cc/fWPT9rpm/image.png" alt="عرض العائلة">
+      <div class="offer-content">
+        <div class="offer-title">عرض العائلة 👨‍👩‍👧‍👦</div>
+        <div class="offer-description">وجبة عائلية تكفي 5 أفراد بـ خصم كبير.</div>
+        <button class="offer-btn" data-title="عرض العائلة 👨‍👩‍👧‍👦" data-description="وجبة عائلية تكفي 5 أفراد بـ خصم كبير." data-image="https://i.postimg.cc/fWPT9rpm/image.png">اطلب الآن</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- مودال العرض -->
+  <div id="modal">
+    <div id="modal-content">
+      <span id="modal-close">×</span>
+      <img src="" alt="صورة العرض" id="modal-image" />
+      <div class="modal-title"></div>
+      <div class="modal-description"></div>
+      <div class="modal-buttons">
+        <a href="#" id="modal-whatsapp" class="btn" target="_blank" rel="noopener noreferrer">احصل على العرض</a>
+      </div>
+    </div>
+  </div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+    const modal = document.getElementById('modal');
+    const modalContent = document.getElementById('modal-content');
+    const modalImage = document.getElementById('modal-image');
+    const modalTitle = modalContent.querySelector('.modal-title');
+    const modalDescription = modalContent.querySelector('.modal-description');
+    const modalWhatsapp = document.getElementById('modal-whatsapp');
+    const modalClose = document.getElementById('modal-close');
+
+    document.querySelectorAll('.offer-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const title = btn.dataset.title;
+        const description = btn.dataset.description;
+        const image = btn.dataset.image;
+
+        modalTitle.textContent = title;
+        modalDescription.textContent = description;
+        modalImage.src = image;
+        modalImage.alt = title;
+
+        // إعداد رابط واتساب مع رسالة الطلب
+        const phone = '+201080146728';
+        const text = encodeURIComponent(`أرغب في طلب العرض: ${title} - الرجاء تأكيد الطلب وإرسال التفاصيل.`);
+        modalWhatsapp.href = `https://wa.me/${phone}?text=${text}`;
+
+        modal.classList.add('show');
+      });
+    });
+
+    modalClose.addEventListener('click', () => {
+      modal.classList.remove('show');
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('show');
+      }
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </section>
+
+  <!-- صفحة المنيو -->
+  <section id="page-menu" class="page">
+    <h2 class="text-center mb-3" style="color: #e2d8d8; font-family: 'Tajawal', sans-serif;">قائمة المنتجات</h2>
+    <div class="container">
+      <div id="categories" class="row g-3 mb-3">
+        <!-- صناديق الأقسام -->
+        <div class="col-6 col-md-3">
+          <div class="card text-center" style="background: rgb(238, 5, 5); cursor:pointer;" onclick="filterCategory('all')">
+            <div class="card-body p-3">
+              <h5 class="card-title text-white">كل المنتجات</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card text-center" style="background: rgba(243, 5, 5, 0.966); cursor:pointer;" onclick="filterCategory('fastfood')">
+            <div class="card-body p-3">
+              <h5 class="card-title text-white">الفطائر </h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card text-center" style="background: rgba(235, 3, 3, 0.932); cursor:pointer;" onclick="filterCategory('drinks')">
+            <div class="card-body p-3">
+              <h5 class="card-title text-white">مخبوزات</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card text-center" style="background: rgb(248, 5, 5); cursor:pointer;" onclick="filterCategory('desserts')">
+            <div class="card-body p-3">
+              <h5 class="card-title text-white">عسل</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="products" class="row g-3">
+        <!-- المنتجات -->
+        <!-- سيتم ملؤها ديناميكياً -->
+      </div>
+    </div>
+  </section>
+
+  <!-- صفحة السلة -->
+  <section id="page-cart" class="page">
+    <h2 class="text-center mb-3" style="color: #000000; font-family: 'Tajawal', sans-serif;">السلة</h2>
+    <div class="container">
+      <div id="cart-items"></div>
+      <div id="cart-total"></div>
+      <button id="confirm-order-btn">تأكيد الطلب عبر واتساب</button>
+    </div>
+  </section>
+
+  <!-- إشعار إضافة للسلة -->
+  <div id="toast">تم إضافة المنتج للسلة</div>
+
+
+
+
+
+
+
+
+
+<!-- صفحة التواصل -->
+<section id="page-contact" class="page">
+  <h2 class="text-center mb-3" style="color: #fff7f7; font-family: 'Kufam', sans-serif;">تواصل معنا</h2>
+  <div class="container text-center">
+    <img src="https://i.postimg.cc/K8qq5CSr/1.png" alt="تواصل معنا" style="max-width: 100%; border-radius: 10px; margin-bottom: 20px;">
+    <p style="color: rgb(236, 234, 234); font-size: 1.1rem; font-family: 'Kufam', sans-serif;">
+      نحن هنا لمساعدتك! لأي استفسار أو طلب خاص، لا تتردد في التواصل معنا.
+    </p>
+    <div style="background-color: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; color: white; margin-top: 10px; font-size: 1.1rem; font-family: 'Kufam', sans-serif;">
+      <p><i class="fas fa-phone-alt"></i> +201080146728</p>
+      <p><i class="fas fa-map-marker-alt"></i>الاسماعليه_مركز فايد الشارع الجديد بجوار جزارة شكوريا</p>
+      <a href="tel:+201080146728" class="btn btn-danger" style="margin-top:10px;">اتصل الآن</a>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- شريط التنقل السفلي -->
+  <nav class="bottom-nav" role="navigation" aria-label="شريط التنقل الرئيسي">
+  <ul>
+  <li>
+    <a href="#" class="nav-link active" data-page="page-home">
+      <i class="fas fa-home"></i>
+      <span>الرئيسية</span>
+    </a>
+  </li>
+  <li>
+    <a href="#" class="nav-link" data-page="page-menu">
+      <i class="fas fa-bars"></i>
+      <span>المنيو</span>
+    </a>
+  </li>
+  <li>
+    <a href="#" class="nav-link" data-page="page-cart">
+      <i class="fas fa-shopping-cart"></i>
+      <span>السلة</span>
+    </a>
+  </li>
+  <li>
+    <a href="#" class="nav-link" data-page="page-contact">
+      <i class="fas fa-phone"></i>
+      <span>تواصل</span>
+    </a>
+  </li>
+</ul>
+
+  </nav>
+
+  <!-- زر واتساب عائم -->
+  <a
+    href="https://wa.me/+201080146728"
+    class="whatsapp-float"
+    target="_blank"
+    aria-label="اتصل بنا عبر واتساب"
+    ><i class="fab fa-whatsapp"></i
+  ></a>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+  ></script>
+  <script>
+    // تفعيل السلايدر
+    $(document).ready(function () {
+      $(".owl-carousel").owlCarousel({
+        rtl: true,
+        loop: true,
+        margin: 10,
+        nav: true,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true,
+        responsive: {
+          0: {
+            items: 1,
+            nav: false,
+          },
+          600: {
+            items: 1,
+            nav: true,
+          },
+          1000: {
+            items: 1,
+            nav: true,
+          },
+        },
+      });
+    });
+
+    // بيانات المنتجات
+    const productsData = [
+      {
+        id: 1,
+        name: "فطير سادة ",
+        price: 20,
+        category: "fastfood",
+        image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUUj42u0jNvP5Sv6h4xX2VE6rFXoa_mr1Y9g&s",
+      },
+            {
+        id: 2,
+        name: "فطير سادة ",
+        price: 40,
+        category: "fastfood",
+        image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUUj42u0jNvP5Sv6h4xX2VE6rFXoa_mr1Y9g&s",
+      },
+            {
+        id: 3,
+        name: "فطير سادة ",
+        price: 60 ,
+        category: "fastfood",
+        image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUUj42u0jNvP5Sv6h4xX2VE6rFXoa_mr1Y9g&s",
+      },
+            {
+        id: 4,
+        name: "فطير سادة ",
+        price: 80,
+        category: "fastfood",
+        image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUUj42u0jNvP5Sv6h4xX2VE6rFXoa_mr1Y9g&s",
+      },
+      {
+        id: 5,
+        name: "فطير سادة بالسمنه البلدي ",
+        price: 50,
+        category: "fastfood",
+        image:
+          "https://media.elbalad.news/2024/10/large/865/6/122.jpg",
+      },
+      {
+        id: 6,
+        name: "فطير سادة بالسمنه البلدي ",
+        price: 100,
+        category: "fastfood",
+        image:
+          "https://media.elbalad.news/2024/10/large/865/6/122.jpg",
+      },
+      {
+        id: 7,
+        name: "فطير سادة بالسمنه البلدي ",
+        price: 200,
+        category: "fastfood",
+        image:
+          "https://media.elbalad.news/2024/10/large/865/6/122.jpg",
+      },
+      {
+        id: 8,
+        name: " فطير محشي رومي",
+        price: 50,
+        category: "fastfood",
+        image:
+          "https://png.pngtree.com/png-vector/20210415/ourmid/pngtree-pastry-cheese-pizza-png-image_3225557.jpg",
+      },
+      {
+        id: 9,
+        name: " فطير محشي ميكس جبن",
+        price: 60,
+        category: "fastfood",
+        image:
+          "https://e7.pngegg.com/pngimages/441/210/png-clipart-sicilian-pizza-cheesecake-turkish-cuisine-recipe-salad-salad-soup-food.png",
+      },
+      {
+        id: 10,
+        name: " فطير محشي جمبري",
+        price: 120,
+        category: "fastfood",
+        image:
+          "https://png.pngtree.com/png-clipart/20250131/original/pngtree-shrimp-pizza-with-fresh-herbs-and-a-crispy-thin-crust-png-image_20109384.png",
+      },
+      {
+        id: 11,
+        name: " فطير محشي لحمه ",
+        price: 100,
+        category: "fastfood",
+        image:
+          "https://i.ytimg.com/vi/H2FTjd-jgwU/maxresdefault.jpg",
+      },
+      {
+        id: 12,
+        name: " فطير محشي بانيه ",
+        price: 80,
+        category: "fastfood",
+        image:
+          "https://kitchen.sayidaty.net/uploads/small/0c/0c025d510206f9f3afb1383405ad2941_w750_h500.png",
+      },
+      {
+        id: 13,
+        name: " فطير محشي سجق",
+        price: 80,
+        category: "fastfood",
+        image:
+          "https://img.youm7.com/ArticleImgs/2024/5/17/580760-%D9%81%D8%B7%D9%8A%D8%B1%D8%A9-%D8%A8%D8%A7%D9%84%D8%B3%D8%AC%D9%82.png",
+      },
+      {
+        id: 14,
+        name: " فطير محشي جبنه قديمه",
+        price: 35,
+        category: "fastfood",
+        image:
+          "https://img.youm7.com/ArticleImgs/2024/5/17/580760-%D9%81%D8%B7%D9%8A%D8%B1%D8%A9-%D8%A8%D8%A7%D9%84%D8%B3%D8%AC%D9%82.png",
+      },
+
+      {
+        id: 15,
+        name: " فطير ب اللبن سادة",
+        price: 40,
+        category: "fastfood",
+        image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKgNhxRM4Wl2pAul6QVvZ8TyoP_63ekZKKww&s",
+      },
+ {
+        id: 16,
+        name: " فطير ب اللبن كاستر ",
+        price: 50,
+        category: "fastfood",
+        image:
+          "https://e7.pngegg.com/pngimages/947/532/png-clipart-custard-pie-pizza-cheese-quiche-european-cuisine-cheese-pizza-baked-goods-food.png",
+      },
+
+       {
+        id: 17,
+        name: " فطير ب اللبن والسكر ",
+        price: 50,
+        category: "fastfood",
+        image:
+          "https://e7.pngegg.com/pngimages/400/768/png-clipart-sugar-pie-pecan-pie-cream-chess-pie-pumpkin-pie-pie-cream-baked-goods.png",
+      },
+       {
+        id: 18,
+        name: " فطير ب اللبن والسكر والعسل  ",
+        price: 60,
+        category: "fastfood",
+        image:
+          "https://png.pngtree.com/png-clipart/20240925/original/pngtree-healthy-sweet-pancake-alternatives-for-a-guilt-free-treat-png-image_16089895.png",
+      },
+       {
+        id: 19,
+        name: " فطير ب السكر ",
+        price: 30,
+        category: "fastfood",
+        image:
+          "https://alarabkitchen.com/wp-content/uploads/2024/08/%D8%B7%D8%B1%D9%8A%D9%82%D8%A9-%D8%B9%D9%85%D9%84-%D9%81%D8%B7%D9%8A%D8%B1%D8%A9-%D8%A8%D8%A7%D9%84%D8%B3%D9%83%D8%B1.jpg",
+      },
+      {
+        id: 20,
+        name: "  فطير ب السكروالعسل ",
+        price: 35,
+        category: "fastfood",
+        image:
+          "https://elanfoushy.com/wp-content/uploads/2022/07/Dessert_%D9%83%D8%A7%D8%B3%D8%AA%D8%B1%D8%AF.jpg",
+      },
+
+{
+        id: 21,
+        name: " فطير ب النوتلا ",
+        price: 50,
+        category: "fastfood",
+        image:
+          "https://images.deliveryhero.io/image/talabat/Menuitems/Elanfoshi_Nutella_Pie_Osa638341965712433581.jpg",
+      },
+{
+        id: 2,
+        name: " فطير ب المكسرات  ",
+        price: 50,
+        category: "fastfood",
+        image:
+          "https://png.pngtree.com/png-vector/20241102/ourmid/pngtree-classic-pecan-pie-with-toasted-nuts-and-golden-crust-perfect-for-png-image_14232764.png",
+      },
+{
+        id: 22,
+        name: " فطير ب النوتلا والمكسرات  ",
+        price: 60,
+        category: "fastfood",
+        image:
+          "https://algamal.shop/wp-content/uploads/2022/10/NUT-500x375.png",
+      },
+{
+        id: 23,
+        name: " فطير ب الموز ",
+        price: 40,
+        category: "fastfood",
+        image:
+          "https://png.pngtree.com/png-clipart/20230928/original/pngtree-pancake-banana-choccolate-png-image_13007089.png",
+      },
+{
+        id: 24,
+        name: " فطير ب البستاشيو ",
+        price: 80,
+        category: "fastfood",
+        image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWnn_WTc8NgJaM8J7NEMlbcHtoZK_du21gHw&s",
+      },
+      
+      
+      {
+        id: 1,
+        name: "كيلو رقاق",
+        price: 50,
+        category: "drinks",
+        image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmebzXAxl8F1dkIZwEbSRaV_aCoomn0rMNzB3vO6OZUUdMeitshrm7WODvxtxzHzCR1fY&usqp=CAU",
+      },
+      {
+        id: 2,
+        name: "كيلو قرص بكاكيم",
+        price: 50,
+        category: "drinks",
+        image:
+          "https://i.ytimg.com/vi/DoUcRoJw1w4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDIE_xEAq65ovABn4thxtuWGzmBTw",
+      },
+{
+        id: 3,
+        name: "عيش سن",
+        price: 20,
+        category: "drinks",
+        image:
+          "https://kitchen.sayidaty.net/uploads/small/39/39ee93f77b51eb838fbd71146c639dac_w750_h500.jpg",
+      },
+{
+        id: 4,
+        name: "عيش ابيض ناشف",
+        price:20,
+        category: "drinks",
+        image:
+          "https://badayamarkets.com/wp-content/uploads/2025/04/ei_1745477629559-removebg-preview-300x300.png",
+      },
+{
+        id: 5,
+        name: "عيش كريب ",
+        price: 15,
+        category: "drinks",
+        image:
+          "https://hatlly.com/wp-content/uploads/2024/08/%D9%81%D8%B1%D8%A7%D8%AE-%D8%B4%D9%88%D8%B1%D9%85%D8%A7.png",
+      },
+{
+        id: 6,
+        name: "كيس قرص ",
+        price: 10,
+        category: "drinks",
+        image:
+          "https://i.ytimg.com/vi/DoUcRoJw1w4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDIE_xEAq65ovABn4thxtuWGzmBTw",
+      },
+      
+      {
+        id: 1,
+        name: "كيلو عسل نحل",
+        price: 150,
+        category: "desserts",
+        image:
+          "https://e7.pngegg.com/pngimages/654/141/png-clipart-honey-honey.png",
+      },
+  {
+        id: 2,
+        name: "نص كيلو عسل نحل ",
+        price: 80,
+        category: "desserts",
+        image:
+          "https://png.pngtree.com/element_pic/00/16/09/1157d53ac10f5d8.jpg",
+      },
+  {
+        id: 3,
+        name: " ربع كيلو عسل نحل ",
+        price: 40,
+        category: "desserts",
+        image:
+          "https://e7.pngegg.com/pngimages/347/24/png-clipart-honey-bee-sweetness-honey-food-sweetness.png",
+      },
+{
+        id: 4,
+        name: "كيلو عسل اسود",
+        price: 50,
+        category: "desserts",
+        image:
+          "https://png.pngtree.com/png-vector/20240513/ourmid/pngtree-keeping-honey-fresh-airtight-jars-unveiled-the-ultimate-preservation-solution-s-png-image_12435306.png",
+      },
+  {
+        id: 5,
+        name: "نص كيلو عسل اسود ",
+        price: 25,
+        category: "desserts",
+        image:
+          "https://www.tawfeer.nl/s/629be774d1d5b8b85d68bede/652d6ea50133ad35941cf0e8/schermafbeelding_2023-05-24_om_00-12-43-removebg-preview.png",
+      },
+      {
+        id: 6,
+        name: " علبه عسل نحل",
+        price: 20,
+        category: "desserts",
+        image:
+          "https://e7.pngegg.com/pngimages/357/691/png-clipart-honey-bee-honey-honey-wasp.png",
+      },
+  {
+        id: 7,
+        name: " علبه عسل اسود",
+        price: 10,
+        category: "desserts",
+        image:
+          "https://aradbranding.com/ar/wp-content/uploads/2022/07/grechishniy.jpg",
+      },
+
+      {
+        id: 8,
+        name: " علبه عسل اسود بطحينه",
+        price: 15,
+        category: "desserts",
+        image:
+          "https://mufhras.com/wp-content/uploads/2021/02/12361568301568718442.jpg",
+      },
+{
+        id: 9,
+        name: " علبه طحينه ",
+        price: 15,
+        category: "desserts",
+        image:
+          "https://c0.klipartz.com/pngpicture/409/965/gratis-png-ingrediente-arabe-del-sesamo-del-tahini-de-la-cocina-del-halva-thumbnail.png",
+      },
+
+{
+        id: 10,
+        name: " علبه جبنه قديمه  ",
+        price: 15,
+        category: "desserts",
+        image:
+          "https://api.cezma.cloud/storage/products/1720015207msh.png",
+      },
+
+{
+        id: 11,
+        name: " علبه جبنه قديمه  ",
+        price: 20,
+        category: "desserts",
+        image:
+          "https://media.elbalad.news/2024/10/large/910/2/491.jpg",
+      },
+
+{
+        id: 12,
+        name: " علبه جبنه فيتا ",
+        price: 10,
+        category: "desserts",
+        image:
+          "https://img.youm7.com/ArticleImgs/2018/7/10/522227-%D8%B5%D9%88%D8%B5-%D8%A7%D9%84%D8%AC%D8%A8%D9%86%D8%A9.PNG",
+      },
+
+{
+        id: 13,
+        name: " علبه مورته ",
+        price: 10,
+        category: "desserts",
+        image:
+          "https://www.eldahan.com/foods/Morta.jpg",
+      },
+{
+        id: 14,
+        name: " علبه جبنه مشطشطه ",
+        price: 15,
+        category: "desserts",
+        image:
+          "https://gomla-eg.com/image/cache/catalog/products/75.png-550x550w.png.webp",
+      },
+{
+        id: 15,
+        name: " علبه جبنه لهلوبه ",
+        price: 15,
+        category: "desserts",
+        image:
+          "https://e7.pngegg.com/pngimages/821/795/png-clipart-bryndza-milk-beyaz-peynir-brined-cheese-milk-cream-food-thumbnail.png",
+      },
+
+
+
+
+
+
+
+
+
+
+
+      
+    ];
+
+    // عربة التسوق
+    let cart = [];
+
+    // عرض المنتجات حسب التصنيف أو الكل
+    function renderProducts(filter = "all") {
+      const container = $("#products");
+      container.empty();
+      let filteredProducts =
+        filter === "all"
+          ? productsData
+          : productsData.filter((p) => p.category === filter);
+
+      filteredProducts.forEach((product) => {
+        container.append(`
+          <div class="col-6 col-md-3">
+            <div class="card h-100" style="background: rgba(255,255,255,0.1); color:#fff;">
+              <img src="${product.image}" class="card-img-top" alt="${product.name}" style="height:150px; object-fit:cover; border-radius: 10px 10px 0 0;">
+              <div class="card-body d-flex flex-column justify-content-between">
+                <h5 class="card-title">${product.name}</h5>
+                <p class="card-text">${product.price} ج.م</p>
+                <button class="btn btn-danger add-to-cart-btn" data-id="${product.id}">أضف للسلة</button>
+              </div>
+            </div>
+          </div>
+        `);
+      });
+
+      // ربط أزرار الإضافة للسلة
+      $(".add-to-cart-btn").click(function () {
+        const id = +$(this).data("id");
+        addToCart(id);
+      });
+    }
+
+    // فلترة الأقسام
+    function filterCategory(category) {
+      renderProducts(category);
+    }
+
+    // إضافة منتج للسلة
+    function addToCart(productId) {
+      const product = productsData.find((p) => p.id === productId);
+      if (!product) return;
+      const existing = cart.find((item) => item.id === productId);
+      if (existing) {
+        existing.quantity++;
+      } else {
+        cart.push({ ...product, quantity: 1 });
+      }
+      showToast("تم إضافة المنتج للسلة");
+      renderCart();
+    }
+
+    // عرض السلة
+    function renderCart() {
+      const container = $("#cart-items");
+      container.empty();
+      if (cart.length === 0) {
+        container.html("<p style='color:#fff;'>السلة فارغة.</p>");
+        $("#cart-total").text("");
+        return;
+      }
+      cart.forEach((item) => {
+        container.append(`
+          <div class="cart-item" aria-label="${item.name}, الكمية: ${item.quantity}">
+            <button class="remove-btn" aria-label="إزالة ${item.name}" data-id="${item.id}">×</button>
+            <strong>${item.name}</strong> - ${item.price} ج.م × ${item.quantity}
+          </div>
+        `);
+      });
+      const total = cart.reduce(
+        (acc, item) => acc + item.price * item.quantity,
+        0
+      );
+      $("#cart-total").text("المجموع: " + total + " ج.م");
+
+      // ربط أزرار إزالة المنتجات
+      $(".remove-btn").click(function () {
+        const id = +$(this).data("id");
+        removeFromCart(id);
+      });
+    }
+
+    // إزالة من السلة
+    function removeFromCart(id) {
+      cart = cart.filter((item) => item.id !== id);
+      renderCart();
+    }
+
+    // إشعار مؤقت
+    function showToast(message) {
+      const toast = $("#toast");
+      toast.text(message).addClass("show");
+      setTimeout(() => {
+        toast.removeClass("show");
+      }, 2000);
+    }
+
+    // تأكيد الطلب - فتح واتساب مع بيانات الطلب
+    $("#confirm-order-btn").click(function () {
+      if (cart.length === 0) {
+        alert("السلة فارغة، يرجى إضافة منتجات أولاً.");
+        return;
+      }
+      let message = "طلب من موقع المعلم:\n\n";
+      cart.forEach((item) => {
+        message += `${item.name} - الكمية: ${item.quantity} - السعر: ${
+          item.price * item.quantity
+        } ج.م\n`;
+      });
+      const total = cart.reduce(
+        (acc, item) => acc + item.price * item.quantity,
+        0
+      );
+      message += `\nالمجموع: ${total} ج.م\n`;
+      const phone = "+201080146728"; // رقم واتساب الصحيح هنا
+      const url =
+        "https://wa.me/" +
+        phone +
+        "?text=" +
+        encodeURIComponent(message);
+      window.open(url, "_blank");
+    });
+
+    // التنقل بين الصفحات
+    $(".bottom-nav a").click(function (e) {
+      e.preventDefault();
+      const page = $(this).data("page");
+      $(".bottom-nav a").removeClass("active").attr("aria-current", "false");
+      $(this).addClass("active").attr("aria-current", "page");
+      $(".page").removeClass("active");
+      $("#" + page).addClass("active");
+      // إعادة تحميل السلايدر عند العودة للصفحة الرئيسية
+      if (page === "page-home") {
+        $(".owl-carousel").trigger('refresh.owl.carousel');
+      }
+    });
+
+    // تحميل المنتجات مبدئياً (كلها)
+    renderProducts("all");
+    renderCart();
+  </script>
+</body>
+</html>
